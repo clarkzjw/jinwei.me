@@ -1,0 +1,62 @@
+@import url(http://fonts.googleapis.com/css?family=Codystar);
+
+body {
+    background: white;
+    margin: 0;
+}
+
+section {
+    margin: auto;
+    margin-top: 10px;
+    background: #333;
+    background-size:550px;
+    width: 700px;
+    height: 419px;
+    color: white;
+    font-family: Codystar, san-serif;
+    position: relative;
+    border: 20px solid white;
+    outline: 1px solid #Ccc;
+}
+
+.imageblock {
+    margin-top:0px;
+    height:419px;
+    width:350px;
+    background: url('http://codecademy-content.s3.amazonaws.com/projects/wHS5Dt/champagne.png');
+    background-position: 0px 0px;
+
+}
+/* Image CC Some rights reserved by Alan Kim - http://www.flickr.com/photos/igraph/8329238413/sizes/l/ */
+
+h1 {
+    /* Any styles here just affect your "<h1>" tags. */
+    font-size: 65px;
+    position: absolute;
+    margin: 0;
+    top: 50px;
+    left: 400px;
+}
+
+h2 {
+    font-size: 14px;
+    position: absolute;
+    margin: 0;
+    top: 320px;
+    left: 400px;
+    font-family: arial;
+    font-weight:normal;
+}
+
+p {
+
+    margin: 0;
+    padding-top: 60px;
+    padding-left: 100px;
+}
+
+img {
+    position: absolute;
+    top: 200px;
+    left: 120px;
+}
