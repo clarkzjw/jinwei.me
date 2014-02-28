@@ -17,7 +17,7 @@ Update Logs:
 
 说明：
 
-该Repo只用于存放http://jinwei.me的各个版本的源代码
+该Repo只用于存放http://jinwei.me 的各个版本的源代码
 
 =========
 
