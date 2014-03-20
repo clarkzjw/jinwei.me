@@ -1,6 +1,13 @@
 jinwei.me
 =========
 
+2014.3.20 将jinwei.me迁移至Github Pages，原有的网站布局全部改变，该Repo不再更新，新网站的Repo地址为：
+
+https://github.com/JinweiClarkChao/jinweiclarkchao.github.com
+
+=============================================================
+=============================================================
+
 A storge of source files of website http://jinwei.me
 
 Update Logs:
