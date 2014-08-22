@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>World of Codes</title>
+	<script type="text/javascript" src="syntax/scripts/shCore.js"></script>
+	<script type="text/javascript" src="syntax/scripts/shBrushCpp.js"></script>
+	<link type="text/css" rel="stylesheet" href="syntax/styles/shCoreDefault.css"/>
+	<style type="text/css">
+	body {
+	background-color: #FF0000;
+	background-image: url();
+}
+    </style>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body style="background: white; font-family: Helvetica">
+
+<h1>A gift of code</h1>
+<pre class="brush: cpp;">
+/**
+* We are both from Lanxi No.1 Middle School,where we met for the first time
+* I write some code to celebrate your birthday.
+*/
+#include "stdio.h"
+int main()
+{
+    int i,j;
+	for(i=0;i< 9;i++)
+	{
+	if(i==0||i==8)
+	{
+		for(j=0;j< 11;j++)
+			printf("*");
+	}
+	else
+    {
+		for(j=0;j< 11;j++)
+		{
+			if(j< 7 && j>3)
+				printf("*");
+			else
+				printf(" ");
+		}
+    }
+        printf("\n");
+	}
+		for(i=0;i< 2;i++)
+		{
+			for(j=0;j< 2-i;j++)
+				printf(" ");
+			for(j=0;j< 2*i+1;j++)
+				printf("*");
+			for(j=0;j< 5-2*i;j++)
+				printf(" ");
+			for(j=0;j< 2*i+1;j++)
+				printf("*");
+			printf("\n");
+		}
+		printf("***********\n");
+		for(i=0;i< 6;i++)
+		{
+			for(j=0;j< i;j++)
+                printf(" ");
+			for(j=0;j< 11-2*i;j++)
+                printf("*");
+			printf("\n");
+        }
+			for(i=0;i< 5;i++)
+			{
+                for(j=0;j< 11;j++)
+					if((j<=1&&j>=0)||(j<=10&&j>=9))
+                        printf("*");
+					else
+                        printf(" ");
+                    printf("\n");
+            }
+			for(i=0;i< 5;i++)
+			{
+                for(j=0;j< i;j++)
+                    printf(" ");
+                printf("**");
+				for(j=0;j< 7-2*i;j++)
+                    printf(" ");
+			if(i==4)
+                printf("*");
+			else
+                printf("**\n");
+            }
+    printf("\n");
+	return 0;
+}
+
+
+</pre>
+</html>
