@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/clarkzjw
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://jinwei.me
+  * I am clarkzjw (https://keybase.io/clarkzjw) on keybase.
+  * I have a public key with fingerprint B878 C370 CF7D 871F AA3C  7663 7E1E B185 1D01 7D3D
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101be1101eec782bbd28cf67116502e64b270b9feb47899530fe7f0f548719842830a",
+            "fingerprint": "b878c370cf7d871faa3c76637e1eb1851d017d3d",
+            "host": "keybase.io",
+            "key_id": "7e1eb1851d017d3d",
+            "kid": "0101be1101eec782bbd28cf67116502e64b270b9feb47899530fe7f0f548719842830a",
+            "uid": "53cfd3155d4131c0affdb2147d9b6019",
+            "username": "clarkzjw"
+        },
+        "service": {
+            "hostname": "jinwei.me",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1462105318,
+    "expire_in": 157680000,
+    "prev": "6d2730cdd77815679cd3c14571f398704e6f36e41d50b6ee95be076b69974ba5",
+    "seqno": 50,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.53
+Comment: https://keybase.io/crypto
+
+yMNFAnicrZJ7UFRVHMeXh8uwIVCZIxkwXaE0V7xn73tRcwyBIRoWmgEqaec+zsXL
+4+66DzYF5GGsI4OGCQ2gFDDEzNImsM1UolPB6DgEpOCMLG5W1ChjBiNNNK0k072M
+/defnT/O4zef7/f8zu/8Lq8P0+hCjiYMNcSHVO8OGR9pdWoKkv+4W4lwFuEwYqxE
+SuHaAssEaHeYSyUBMSIoQAEHgTJDyFO0geMEA82LJAUASaAGSOKcgUI5RoQcTtEM
+Q2CoCCkRFQmcpgBD4wYaQ1lEj4iSXAxtVpskOxRbjqZoHqNQXqQEhRNZFuMpksQo
+CCAHaAIIKKAETFCEBy12VaEkx7F2mCJZlJhyMK+l9x/8/5y3c82OwHhRwABBCDjA
+AI+yoihwBoBTAsORKGBU0A5tMlsOFZovY22lR0pcSLUeUaIVEg/VwqoveUyUSLIL
+SinKXo9YbRaHhbeUKeGDDofVblRljsNWlXNBzvzYwcxJsqAUUVFUQJtdssiIESgk
+75BUS4CTBoASGKD1CHzHKtmgWVIJgiJpVBnqPbBCsSQFA4WhvCBQFA0IkmJ4AeMB
+Tii/gDE0heKQFDES4kAgUI6EkCE4iFIkRzIMhXMsgahvOiRbECOhmDrYYsXTLhXL
+rMNpg0j16MiBcE2ITqNdF6p2l0YXGftvzw1fj9V07jZ9X1sf+502bWbdQlLX1R7P
+l6axi+NbZm/r/tywmvBL2L7E9/fKg9t/nZjhkMhP5/KiG6YCO0xjUn/VU8EtGb5x
+d1th7NVg3EzdrkdjoGby5oUCgvX3mBZPV2S40yfvP9L2/37gs2vDS+zOZaHJGWjQ
+6GXL3V3HQvNLH2Z6vfX1HqcnUNO63JkRtbKEJ7iX6uY+XyWypdQXxp974u1e0/Tg
+yv6POuLjVrRVrwyszi3+4DJEBSLcfXfykq31eLh5YaUkOmaj/05VQtRFb+L5GP3G
+ofLJufek2zn9nsLVnJZr86c2+YI9rlnLGHixfPqDvHnx0mxG5sn8C16Cf6mwsPfD
+Ru1CL3vkt+iMvOiQkYnr51qEbm91l/Xes+2+jpLUTxa035qDl2rSZ6Zer2wLnBmY
+2m8abW7avHlre0eVK1H3VVQg6Y24Z0KXJ18ztiXfe/7B0xHbvsl6efvIyRO1fWnp
+V7jywQ2Re3QR8XWnq96030+BYW3y1HR7fXLRXz/e6t53qi8uZn2jq7llK5HzbuXH
+i+FPjuZGBI96d/7dsjentfnn3MYrtxbr9nS7z77l85/PTHV48s/mx0c3FWT7Ziof
+BDuGZzd9nZ001DWv6+270d5hPPZT2Y3EtODxgVq/5gxe5OdC49yXt920vxr6RRZr
+mjj+sJouOmfzQefwoSwkt7Nnxz9wBr0H
+=2h1N
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/clarkzjw
+
+==================================================================
+
