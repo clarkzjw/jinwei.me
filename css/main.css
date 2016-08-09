@@ -1,0 +1,176 @@
+@-webkit-keyframes fade {
+    0% {
+        opacity: 0;
+        margin-top: 10px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: Penumbra, HiraginoSansGB-W3, sans-serif;
+}
+
+h1 {
+    font-size: 22px;
+    line-height: 40px;
+    -webkit-transition: padding 100ms ease;
+}
+
+p {
+    font-size: 20px;
+    line-height: 40px;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    -webkit-transition: margin 1000ms ease;
+}
+
+span#loveu {
+    font-size: 17px;
+    line-height: 40px;
+    font: "Microsoft Ya Hei";
+}
+
+div#card {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -300px;
+    box-shadow: 0px 5px 20px -5px black;
+    background: black;
+    font: "Microsoft Yi Baiti", Roboto, "华文行楷";
+}
+
+div.block {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    float: left;
+    box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    -webkit-transition: opacity 145s ease;
+}
+
+div.block:hover > .divin img {
+    margin-top: -20px;
+}
+
+div.block:hover > .divin h1 {
+    padding-top: 20px;
+}
+
+div.block:hover > .divin {
+    margin-top: -100px;
+}
+
+div.block:hover > .time5 {
+    margin-top: -110px;
+}
+
+div.block:hover > .inbox {
+    -webkit-animation: fade 500ms ease 200ms both;
+}
+
+div.divin {
+    width: 100px;
+    height: 140px;
+    padding: 30px 50px;
+    -webkit-transition: margin 300ms ease;
+}
+
+div.inbox {
+    width: 150px;
+    padding: 0px 25px;
+}
+
+div.time {
+    width: 175px;
+    margin: 0px auto;
+    padding: 0px;
+    height: 100px;
+    padding: 10px 12.5px 0px;
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+div.time li.list {
+    list-style: none;
+    position: relative;
+    float: left;
+    width: 25px;
+    height: 50px;
+    margin: 0px 0px 10px 0px;
+    font-size: 12px;
+    -webkit-transition: 200ms ease;
+}
+
+div.time li.list:hover {
+    color: yellow;
+    -webkit-transform: scale(1.1);
+}
+
+div#b1 {
+    background-color: #2CC0E2;
+}
+
+div#b2 {
+    background-color: #59D999;
+}
+
+div#b3 {
+    background-color: #7658F9;
+}
+
+div#b4 {
+    background-color: #E9C24E;
+}
+
+div#b5 {
+    background-color: #E55679;
+}
+
+div#b6 {
+    background-color: grey;
+}
+
+span.last {
+    position: absolute;
+    font-size: 72px;
+    line-height: 200px;
+    width: 200px;
+    height: 200px;
+    left: 0px;
+    top: 0px;
+    -webkit-transition: opacity 200ms ease;
+}
+
+span#u {}
+
+span#real {
+    position: absolute;
+    opacity: 0;
+}
+
+div#b6:hover #u {
+    opacity: 0;
+}
+
+div#b6:hover #real {
+    opacity: 1;
+}
