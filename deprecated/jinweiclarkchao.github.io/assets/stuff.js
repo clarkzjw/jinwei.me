@@ -29,6 +29,6 @@ putImages = function(pics) {
   pic = pics[Math.floor(Math.random() * pics.length)];
   box = $(".instagram");
   box.html("");
-  box.append("<a target='_blank' href='" + pic.link + "' class=img><img src='" + pic.images.low_resolution.url + "'></div>");
+  box.append("<a target='_blank' rel='noopener noreferrer' href='" + pic.link + "' class=img><img src='" + pic.images.low_resolution.url + "'></div>");
   return load();
 };
