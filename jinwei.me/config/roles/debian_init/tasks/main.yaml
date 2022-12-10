@@ -1,0 +1,62 @@
+- name: Disable unattended-upgrades
+  ansible.builtin.systemd:
+    name: unattended-upgrades
+    state: stopped
+    enabled: false
+
+- name: install packages
+  apt:
+    name:
+      - apt-transport-https
+      - build-essential
+      - ca-certificates
+      - mariadb-client
+      - lsb-release
+      - unzip
+      - gnupg
+      - htop
+      - curl
+      - zip
+      - vim
+      - zsh
+      - git
+    update_cache: true
+
+- name: add user
+  user:
+    name: clarkzjw
+    shell: /usr/bin/zsh
+    home: "{{ user_home }}"
+    system: true
+
+- name: Add Docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    keyring: /etc/apt/trusted.gpg.d/docker.gpg
+    state: present
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/docker.gpg] https://download.docker.com/linux/debian {{ ansible_distribution_release | lower }} stable
+    state: present
+
+- name: Update apt and install docker-ce
+  apt:
+    name:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-compose-plugin
+    state: latest
+    update_cache: true
+
+- name: enable docker service
+  systemd:
+    name: docker
+    enabled: true
+    daemon_reload: true
+
+- name: Clean unneeded packages
+  ansible.builtin.apt:
+    autoremove: true
+    purge: true

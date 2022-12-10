@@ -1,0 +1,3 @@
+- hosts: jinwei-me
+  roles:
+    - role: debian_init
