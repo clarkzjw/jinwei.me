@@ -6,6 +6,7 @@ resource "aws_db_parameter_group" "jinwei-me" {
 
 resource "aws_db_instance" "jinwei-me" {
   identifier             = var.name
+  db_name                = var.rds_initial_db_name
   instance_class         = var.rds_instance_class
   allocated_storage      = var.rds_storage
   engine                 = var.rds_engine

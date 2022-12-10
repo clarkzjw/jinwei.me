@@ -14,6 +14,10 @@ variable "region" {
 
 
 # RDS
+variable "rds_initial_db_name" {
+  default = "wordpress"
+}
+
 variable "rds_instance_class" {
   default = "db.t3.micro"
 }

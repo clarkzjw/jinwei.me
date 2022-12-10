@@ -1,3 +1,4 @@
 - hosts: jinwei-me
   roles:
     - role: debian_init
+    - role: wordpress
