@@ -29,7 +29,7 @@ resource "cloudflare_argo_tunnel" "tunnel" {
 
 resource "cloudflare_record" "tunnel_dns" {
   zone_id = data.cloudflare_zones.domain.zones[0].id
-  name    = "next.${var.site_domain}"
+  name    = var.site_domain
   value   = "${cloudflare_argo_tunnel.tunnel.id}.cfargotunnel.com"
   type    = "CNAME"
   proxied = true
@@ -41,7 +41,7 @@ resource "cloudflare_tunnel_config" "tunnel_route" {
 
   config {
     ingress_rule {
-      hostname = "next.jinwei.me"
+      hostname = "jinwei.me"
       path     = "/"
       service  = "http://wordpress:80"
     }

@@ -1,0 +1,29 @@
+- name: Pull wordpress Docker image
+  community.docker.docker_image:
+    name: "{{ wordpress_image }}:{{ wordpress_image_tag }}"
+    source: pull
+
+- name: Start wordpress container using docker-compose
+  community.docker.docker_compose:
+    project_name: wordpress
+    definition:
+      version: '3'
+      services:
+        cloudflared:
+          image: cloudflare/cloudflared
+          container_name: cloudflare-tunnel
+          restart: always
+          command: tunnel run
+          environment:
+            - TUNNEL_TOKEN={{ cloudflared_tunnel_token }}
+        wordpress:
+          image: "{{ wordpress_image }}:{{ wordpress_image_tag }}"
+          volumes:
+            - "{{ wordpress_home }}/wp-content:/var/www/html/wp-content"
+          restart: always
+          environment:
+            - WORDPRESS_DB_HOST={{ wordpress_db_host }}
+            - WORDPRESS_DB_USER={{ wordpress_db_user }}
+            - WORDPRESS_DB_PASSWORD={{ wordpress_db_password }}
+            - WORDPRESS_DB_NAME={{ wordpress_db_name }}
+  register: output
