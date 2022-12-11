@@ -37,8 +37,6 @@ output "s3" {
 }
 
 output "tunnel" {
-  value = {
-    tunnel_secret = cloudflare_argo_tunnel.tunnel.secret
-  }
+  value = cloudflare_argo_tunnel.tunnel
   sensitive = true
 }

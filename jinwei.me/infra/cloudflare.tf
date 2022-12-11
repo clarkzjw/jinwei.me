@@ -26,3 +26,27 @@ resource "cloudflare_argo_tunnel" "tunnel" {
   name       = "${var.name}-aws-tunnel"
   secret     = random_id.argo_secret.b64_std
 }
+
+resource "cloudflare_record" "tunnel_dns" {
+  zone_id = data.cloudflare_zones.domain.zones[0].id
+  name    = "next.${var.site_domain}"
+  value   = "${cloudflare_argo_tunnel.tunnel.id}.cfargotunnel.com"
+  type    = "CNAME"
+  proxied = true
+}
+
+resource "cloudflare_tunnel_config" "tunnel_route" {
+  account_id = var.cloudflare_account_id
+  tunnel_id  = cloudflare_argo_tunnel.tunnel.id
+
+  config {
+    ingress_rule {
+      hostname = "next.jinwei.me"
+      path     = "/"
+      service  = "http://127.0.0.1:30080"
+    }
+    ingress_rule {
+      service = "http_status:404"
+    }
+  }
+}
