@@ -51,7 +51,12 @@ variable "ec2_instance_type" {
   default = "t2.micro"
 }
 
-#variable "ec2_key_name" {
-#  description = "Name of key pair to log into the EC2 instance. The key pair must already exist."
-#  type        = string
-#}
+variable "site_domain" {
+  type        = string
+  default     = "jinwei.me"
+}
+
+variable "s3_cdn_name" {
+  type = string
+  default = "static"
+}
