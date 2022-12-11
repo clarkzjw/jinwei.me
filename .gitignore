@@ -1,5 +1,5 @@
 .idea/
-aws-rc
+admin-rc
 connect_mysql.sh
 # Local .terraform directories
 **/.terraform/*

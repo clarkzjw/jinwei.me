@@ -50,3 +50,9 @@ resource "cloudflare_tunnel_config" "tunnel_route" {
     }
   }
 }
+
+resource "aws_ssm_parameter" "cloudflare_tunnel_token" {
+  name  = "/${local.name}/cloudflare/tunnel_token"
+  type  = "SecureString"
+  value = cloudflare_argo_tunnel.tunnel.tunnel_token
+}

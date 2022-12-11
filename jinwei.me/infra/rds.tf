@@ -25,3 +25,33 @@ resource "random_password" "mysql_password" {
   length  = 16
   special = false
 }
+
+resource "aws_ssm_parameter" "wordpress_db_host" {
+  name  = "/${var.name}/mysql/host"
+  type  = "String"
+  value = aws_db_instance.jinwei-me.address
+}
+
+resource "aws_ssm_parameter" "wordpress_db_port" {
+  name  = "/${var.name}/mysql/port"
+  type  = "String"
+  value = aws_db_instance.jinwei-me.port
+}
+
+resource "aws_ssm_parameter" "wordpress_db_name" {
+  name  = "/${local.name}/mysql/name"
+  type  = "String"
+  value = aws_db_instance.jinwei-me.db_name
+}
+
+resource "aws_ssm_parameter" "wordpress_db_user" {
+  name  = "/${local.name}/mysql/username"
+  type  = "String"
+  value = aws_db_instance.jinwei-me.username
+}
+
+resource "aws_ssm_parameter" "wordpress_db_password" {
+  name  = "/${local.name}/mysql/password"
+  type  = "SecureString"
+  value = random_password.mysql_password.result
+}
