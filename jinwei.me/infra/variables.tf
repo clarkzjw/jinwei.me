@@ -64,3 +64,9 @@ variable "s3_cloudfront_name" {
   type = string
   default = "static.jinwei.me"
 }
+
+variable "cloudflare_account_id" {
+  description = "The Cloudflare UUID for the Account the Zone lives in."
+  type        = string
+  sensitive   = true
+}

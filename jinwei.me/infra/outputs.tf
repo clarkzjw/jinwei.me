@@ -35,3 +35,10 @@ output "s3" {
     policy = aws_s3_bucket_policy.main.policy
   }
 }
+
+output "tunnel" {
+  value = {
+    tunnel_secret = cloudflare_argo_tunnel.tunnel.secret
+  }
+  sensitive = true
+}

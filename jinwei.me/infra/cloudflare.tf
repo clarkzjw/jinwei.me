@@ -16,3 +16,13 @@ resource "cloudflare_record" "s3_bucket" {
   ttl     = 1
   proxied = true
 }
+
+resource "random_id" "argo_secret" {
+  byte_length = 35
+}
+
+resource "cloudflare_argo_tunnel" "tunnel" {
+  account_id = var.cloudflare_account_id
+  name       = "${var.name}-aws-tunnel"
+  secret     = random_id.argo_secret.b64_std
+}
