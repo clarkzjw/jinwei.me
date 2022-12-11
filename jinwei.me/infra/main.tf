@@ -24,6 +24,9 @@ resource "aws_instance" "jinwei_me" {
 
   root_block_device {
     volume_type = "gp3"
+    // how to resize partition and file system after resizing ebs volume
+    // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html
+    volume_size = "30"
     tags = {
       Name = "${local.name}-root"
     }
