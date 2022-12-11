@@ -35,7 +35,7 @@ resource "aws_acm_certificate_validation" "us-east-1" {
 # Cloudflare validation record
 resource "cloudflare_record" "acm" {
   zone_id = data.cloudflare_zones.domain.zones[0].id
-  name   = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_name
-  type   = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_type
-  value  = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_value
+  name    = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_name
+  type    = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_type
+  value   = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_value
 }

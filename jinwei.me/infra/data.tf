@@ -9,4 +9,3 @@ data "aws_ami" "debian" {
 }
 
 data "aws_availability_zones" "available" {}
-data "cloudflare_ip_ranges" "cloudflare" {}

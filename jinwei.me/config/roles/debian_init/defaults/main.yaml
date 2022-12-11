@@ -1,1 +1,2 @@
 user_home: /home/clarkzjw
+cloudflare_deb_url: https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb

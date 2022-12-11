@@ -51,17 +51,17 @@ variable "ec2_instance_type" {
 }
 
 variable "site_domain" {
-  type        = string
-  default     = "jinwei.me"
+  type    = string
+  default = "jinwei.me"
 }
 
 variable "s3_cdn_name" {
-  type = string
+  type    = string
   default = "static"
 }
 
 variable "s3_cloudfront_name" {
-  type = string
+  type    = string
   default = "static.jinwei.me"
 }
 

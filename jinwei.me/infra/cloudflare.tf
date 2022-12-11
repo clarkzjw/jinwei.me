@@ -43,7 +43,7 @@ resource "cloudflare_tunnel_config" "tunnel_route" {
     ingress_rule {
       hostname = "next.jinwei.me"
       path     = "/"
-      service  = "http://127.0.0.1:30080"
+      service  = "http://wordpress:80"
     }
     ingress_rule {
       service = "http_status:404"

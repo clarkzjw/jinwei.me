@@ -32,11 +32,11 @@ output "s3" {
   description = "S3 bucket for wordpress"
   value = {
     bucket_domain_name = aws_s3_bucket.main.bucket_regional_domain_name
-    policy = aws_s3_bucket_policy.main.policy
+    policy             = aws_s3_bucket_policy.main.policy
   }
 }
 
 output "tunnel" {
-  value = cloudflare_argo_tunnel.tunnel
+  value     = cloudflare_argo_tunnel.tunnel.tunnel_token
   sensitive = true
 }
