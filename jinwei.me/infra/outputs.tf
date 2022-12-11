@@ -27,3 +27,10 @@ output "instance" {
     private_ip = aws_instance.jinwei_me.private_ip
   }
 }
+
+output "s3" {
+  description = "S3 bucket for wordpress"
+  value = {
+    bucket_domain_name = aws_s3_bucket.main.bucket_domain_name
+  }
+}
