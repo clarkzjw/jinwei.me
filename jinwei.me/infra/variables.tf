@@ -12,7 +12,6 @@ variable "region" {
   description = "AWS region"
 }
 
-
 # RDS
 variable "rds_initial_db_name" {
   default = "wordpress"
@@ -59,4 +58,9 @@ variable "site_domain" {
 variable "s3_cdn_name" {
   type = string
   default = "static"
+}
+
+variable "s3_cloudfront_name" {
+  type = string
+  default = "static.jinwei.me"
 }

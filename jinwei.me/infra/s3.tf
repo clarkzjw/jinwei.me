@@ -22,7 +22,7 @@ resource "aws_s3_bucket_policy" "main" {
 }
 
 data "aws_iam_policy_document" "bucket_policy" {
-  # Allow Cloudflare to read from the bucket
+  # Allow Cloudfront to read from the bucket
   statement {
     principals {
       type = "AWS"
@@ -37,9 +37,9 @@ data "aws_iam_policy_document" "bucket_policy" {
       "${aws_s3_bucket.main.arn}/*",
     ]
     condition {
-      test     = "IpAddress"
-      variable = "AWS:SourceIp"
-      values   = data.cloudflare_ip_ranges.cloudflare.cidr_blocks
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [aws_cloudfront_distribution.main.arn]
     }
   }
 }

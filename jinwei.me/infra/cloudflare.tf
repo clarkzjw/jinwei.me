@@ -7,9 +7,10 @@ data "cloudflare_zones" "domain" {
 }
 
 resource "cloudflare_record" "s3_bucket" {
+  # Point CNAME record in Cloudflare to Cloudfront
   zone_id = data.cloudflare_zones.domain.zones[0].id
   name    = var.s3_cdn_name
-  value   = aws_s3_bucket.main.bucket_regional_domain_name
+  value   = aws_cloudfront_distribution.main.domain_name
   type    = "CNAME"
 
   ttl     = 1
