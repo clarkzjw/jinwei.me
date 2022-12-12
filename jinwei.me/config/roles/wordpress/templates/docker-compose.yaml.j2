@@ -3,6 +3,7 @@ services:
     cloudflared:
         image: cloudflare/cloudflared
         container_name: cloudflare-tunnel
+        network_mode: host
         restart: always
         command: tunnel run
         environment:
@@ -12,6 +13,8 @@ services:
         volumes:
         - "{{ wordpress_home }}/wp-content:/var/www/html/wp-content"
         restart: always
+        ports:
+        - 30081:80
         environment:
         - WORDPRESS_DB_HOST={{ lookup('aws_ssm', '/jinwei-me/mysql/host') }}:{{ lookup('aws_ssm', '/jinwei-me/mysql/port') }}
         - WORDPRESS_DB_USER={{ lookup('aws_ssm', '/jinwei-me/mysql/username') }}

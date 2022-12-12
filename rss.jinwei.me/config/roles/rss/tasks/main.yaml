@@ -20,7 +20,7 @@
     login_user: "{{ lookup('aws_ssm', '/jinwei-me/mysql/username') }}"
     login_password: "{{ lookup('aws_ssm', '/jinwei-me/mysql/password') }}"
     name: "{{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_user') }}"
-    host: "*"
+    host: "%"
     password: "{{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_password') }}"
     priv: "{{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_name') }}.*:ALL"
     state: present

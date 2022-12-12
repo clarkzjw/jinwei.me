@@ -55,12 +55,12 @@ resource "cloudflare_tunnel_config" "tunnel_route" {
     ingress_rule {
       hostname = "jinwei.me"
       path     = "/"
-      service  = "http://wordpress:80"
+      service  = "http://127.0.0.1:30081"
     }
     ingress_rule {
       hostname = "feed.jinwei.me"
       path     = "/"
-      service  = "http://127.0.0.1:30080"
+      service  = "http://127.0.0.1:30082"
     }
     ingress_rule {
       service = "http_status:404"

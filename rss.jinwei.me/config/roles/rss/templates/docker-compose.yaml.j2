@@ -1,29 +1,23 @@
 version: "3"
 services:
-  ttrss:
-    image: wangqiru/ttrss:nightly-2022-08-09
-    container_name: ttrss
-    environment:
-      - SELF_URL_PATH={{ lookup('aws_ssm', '/jinwei-me/ttrss/url') }}
-      - DB_HOST={{ lookup('aws_ssm', '/jinwei-me/mysql/host') }}
-      - DB_PORT={{ lookup('aws_ssm', '/jinwei-me/mysql/port') }}
-      - DB_NAME={{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_name') }}
-      - DB_USER={{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_user') }}
-      - DB_PASS={{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_password') }}
-      - PUID=1000
-      - PGID=1000
-    ports:
-      - 30080:80
+  freshrss:
+    image: freshrss/freshrss:edge
+    container_name: freshrss
+    restart: always
+    logging:
+      options:
+        max-size: 10m
     volumes:
-      - {{ rss_home }}/feed-icons:/var/www/feed-icons/
-    stdin_open: true
-    tty: true
-    restart: always
-
-  mercury:
-    image: wangqiru/mercury-parser-api:latest
-    container_name: ttrss_mercury
-    restart: always
+      # Recommended volume for FreshRSS persistent data such as configuration and SQLite databases
+      - {{ rss_home }}/data:/var/www/FreshRSS/data
+      # Optional volume for storing third-party extensions
+      - {{ rss_home }}/extensions:/var/www/FreshRSS/extensions
+    ports:
+      # If you want to open a port 8080 on the local machine:
+      - 30082:80
+    environment:
+      # A timezone http://php.net/timezones (default is UTC)
+      TZ: America/Vancouver
 
   rssbot:
     build:
