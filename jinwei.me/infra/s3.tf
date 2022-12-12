@@ -52,3 +52,10 @@ resource "aws_s3_object" "check" {
   content      = "OK"
   content_type = "text/plain"
 }
+
+resource "aws_s3_object" "ping" {
+  bucket       = aws_s3_bucket.static.id
+  key          = "ping"
+  content      = "pong"
+  content_type = "text/plain"
+}
