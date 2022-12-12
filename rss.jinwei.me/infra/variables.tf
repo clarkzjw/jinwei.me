@@ -21,7 +21,7 @@ variable "ttrss_db_user" {
 }
 
 variable "ttrss_site_url" {
-  default = "feed.jinwei.me"
+  default = "https://feed.jinwei.me"
 }
 
 variable "rss_tgbot_token" {

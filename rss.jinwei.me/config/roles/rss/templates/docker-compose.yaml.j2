@@ -12,6 +12,8 @@ services:
       - DB_PASS={{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_password') }}
       - PUID=1000
       - PGID=1000
+    ports:
+      - 30080:80
     volumes:
       - {{ rss_home }}/feed-icons:/var/www/feed-icons/
     stdin_open: true

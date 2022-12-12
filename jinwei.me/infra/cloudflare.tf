@@ -60,7 +60,7 @@ resource "cloudflare_tunnel_config" "tunnel_route" {
     ingress_rule {
       hostname = "feed.jinwei.me"
       path     = "/"
-      service  = "http://ttrss:80"
+      service  = "http://127.0.0.1:30080"
     }
     ingress_rule {
       service = "http_status:404"
