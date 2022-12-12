@@ -1,0 +1,17 @@
+- name: render Dockerfile.rssbot
+  template:
+    src: Dockerfile.rssbot.j2
+    dest: "{{ rss_home }}/Dockerfile.rssbot"
+    mode: 0644
+
+- name: render docker-compose
+  template:
+    src: docker-compose.yaml.j2
+    dest: "{{ rss_home }}/docker-compose.yaml"
+    mode: 0644
+
+- name: Start rss toolchain using docker-compose
+  community.docker.docker_compose:
+    project_name: rss
+    project_src: "{{ rss_home }}"
+  register: output

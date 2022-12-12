@@ -1,0 +1,32 @@
+version: "3"
+services:
+  ttrss:
+    image: wangqiru/ttrss:nightly-2022-08-09
+    container_name: ttrss
+    environment:
+      - SELF_URL_PATH={{ lookup('aws_ssm', '/jinwei-me/ttrss/url') }}
+      - DB_HOST={{ lookup('aws_ssm', '/jinwei-me/mysql/host') }}
+      - DB_PORT={{ lookup('aws_ssm', '/jinwei-me/mysql/port') }}
+      - DB_NAME={{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_name') }}
+      - DB_USER={{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_user') }}
+      - DB_PASS={{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_password') }}
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - {{ rss_home }}/feed-icons:/var/www/feed-icons/
+    stdin_open: true
+    tty: true
+    restart: always
+
+  mercury:
+    image: wangqiru/mercury-parser-api:latest
+    container_name: ttrss_mercury
+    restart: always
+
+  rssbot:
+    build:
+      dockerfile: ./Dockerfile.rssbot
+    container_name: ttrss_rssbot
+    restart: always
+    environment:
+      - TOKEN={{ lookup('aws_ssm', '/jinwei-me/tgbot/token') }}

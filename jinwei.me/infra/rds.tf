@@ -1,4 +1,3 @@
-
 resource "aws_db_parameter_group" "jinwei-me" {
   name   = var.name
   family = var.rds_parameter_group
