@@ -31,8 +31,7 @@ output "instance" {
 output "s3" {
   description = "S3 bucket for wordpress"
   value = {
-    bucket_domain_name = aws_s3_bucket.main.bucket_regional_domain_name
-    policy             = aws_s3_bucket_policy.main.policy
+    bucket_domain_name = aws_s3_bucket.static.bucket_regional_domain_name
   }
 }
 

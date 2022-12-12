@@ -8,7 +8,7 @@ resource "aws_cloudfront_distribution" "main" {
   wait_for_deployment = false
 
   default_cache_behavior {
-    target_origin_id = aws_s3_bucket.main.bucket_regional_domain_name
+    target_origin_id = aws_s3_bucket.static.bucket_regional_domain_name
 
     compress                 = true
     viewer_protocol_policy   = "redirect-to-https"
@@ -19,8 +19,8 @@ resource "aws_cloudfront_distribution" "main" {
   }
 
   origin {
-    origin_id                = aws_s3_bucket.main.bucket_regional_domain_name
-    domain_name              = aws_s3_bucket.main.bucket_regional_domain_name
+    origin_id                = aws_s3_bucket.static.bucket_regional_domain_name
+    domain_name              = aws_s3_bucket.static.bucket_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.main.id
   }
 
