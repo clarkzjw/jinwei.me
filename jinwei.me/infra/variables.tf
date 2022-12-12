@@ -55,11 +55,6 @@ variable "site_domain" {
   default = "jinwei.me"
 }
 
-variable "feed_domain" {
-  type    = string
-  default = "feed.jinwei.me"
-}
-
 variable "s3_cdn_name" {
   type    = string
   default = "static"

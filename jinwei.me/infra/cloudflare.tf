@@ -35,18 +35,6 @@ resource "cloudflare_record" "tunnel_dns" {
   proxied = true
 }
 
-# TODO
-# since cloudflare terraform provider does not provide an argo tunnel data source
-# refactor this as a separate module?
-# https://registry.terraform.io/providers/cloudflare/cloudflare/3.29.0
-resource "cloudflare_record" "rss_dns" {
-  zone_id = data.cloudflare_zones.domain.zones[0].id
-  name    = var.feed_domain
-  value   = "${cloudflare_argo_tunnel.tunnel.id}.cfargotunnel.com"
-  type    = "CNAME"
-  proxied = true
-}
-
 resource "cloudflare_tunnel_config" "tunnel_route" {
   account_id = var.cloudflare_account_id
   tunnel_id  = cloudflare_argo_tunnel.tunnel.id
@@ -56,11 +44,6 @@ resource "cloudflare_tunnel_config" "tunnel_route" {
       hostname = "jinwei.me"
       path     = "/"
       service  = "http://127.0.0.1:30081"
-    }
-    ingress_rule {
-      hostname = "feed.jinwei.me"
-      path     = "/"
-      service  = "http://127.0.0.1:30082"
     }
     ingress_rule {
       service = "http_status:404"

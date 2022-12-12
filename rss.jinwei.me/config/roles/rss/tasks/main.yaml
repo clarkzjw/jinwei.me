@@ -4,25 +4,25 @@
       - python3-pymysql
     update_cache: true
 
-- name: create ttrss database if not exists
+- name: create rss database if not exists
   community.mysql.mysql_db:
     login_host: "{{ lookup('aws_ssm', '/jinwei-me/mysql/host') }}"
     login_port: "{{ lookup('aws_ssm', '/jinwei-me/mysql/port') }}"
     login_user: "{{ lookup('aws_ssm', '/jinwei-me/mysql/username') }}"
     login_password: "{{ lookup('aws_ssm', '/jinwei-me/mysql/password') }}"
-    name: "{{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_name') }}"
+    name: "{{ lookup('aws_ssm', '/jinwei-me/mysql/rss_db_name') }}"
     state: present
 
-- name: create ttrss database user
+- name: create rss database user
   community.mysql.mysql_user:
     login_host: "{{ lookup('aws_ssm', '/jinwei-me/mysql/host') }}"
     login_port: "{{ lookup('aws_ssm', '/jinwei-me/mysql/port') }}"
     login_user: "{{ lookup('aws_ssm', '/jinwei-me/mysql/username') }}"
     login_password: "{{ lookup('aws_ssm', '/jinwei-me/mysql/password') }}"
-    name: "{{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_user') }}"
+    name: "{{ lookup('aws_ssm', '/jinwei-me/mysql/rss_db_user') }}"
     host: "%"
-    password: "{{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_password') }}"
-    priv: "{{ lookup('aws_ssm', '/jinwei-me/mysql/ttrss_db_name') }}.*:ALL"
+    password: "{{ lookup('aws_ssm', '/jinwei-me/mysql/rss_user_password') }}"
+    priv: "{{ lookup('aws_ssm', '/jinwei-me/mysql/rss_db_name') }}.*:ALL"
     state: present
 
 - name: create rss_home

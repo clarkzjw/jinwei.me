@@ -12,15 +12,15 @@ variable "region" {
   description = "AWS region"
 }
 
-variable "ttrss_db_name" {
-  default = "ttrss"
+variable "rss_db_name" {
+  default = "rss"
 }
 
-variable "ttrss_db_user" {
-  default = "ttrss"
+variable "rss_db_user" {
+  default = "rss"
 }
 
-variable "ttrss_site_url" {
+variable "rss_site_url" {
   default = "https://feed.jinwei.me"
 }
 
