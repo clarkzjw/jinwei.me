@@ -1,3 +1,0 @@
-- hosts: "{{ target }}"
-  roles:
-    - role: "{{ role }}"
