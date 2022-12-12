@@ -25,6 +25,7 @@ services:
 
   rssbot:
     build:
+      context: .
       dockerfile: ./Dockerfile.rssbot
     container_name: ttrss_rssbot
     restart: always
