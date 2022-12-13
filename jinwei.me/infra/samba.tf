@@ -13,5 +13,5 @@ resource "aws_ssm_parameter" "hetzner_password" {
 resource "aws_ssm_parameter" "hetzner_storagebox" {
   name  = "/${local.name}/hetzner/storagebox"
   type  = "SecureString"
-  value = var.hetzner_password
+  value = var.hetzner_storagebox
 }

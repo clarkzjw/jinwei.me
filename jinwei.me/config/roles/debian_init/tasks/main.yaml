@@ -62,7 +62,7 @@
     daemon_reload: true
 
 - name: Clean unneeded packages
-  ansible.builtin.apt:
+  apt:
     autoremove: true
     purge: true
 
@@ -71,7 +71,7 @@
     content: |
       username={{ lookup('aws_ssm', '/jinwei-me/hetzner/username') }}
       password={{ lookup('aws_ssm', '/jinwei-me/hetzner/password') }}
-    dest: {{ user_home }}/.credential
+    dest: "{{ user_home }}/.credential"
     mode: 0600
   become: true
   become_user: admin
@@ -84,6 +84,12 @@
     src: "//{{ lookup('aws_ssm', '/jinwei-me/hetzner/storagebox') }}"
     path: "{{ samba_mount_point }}"
   become: true
+
+- name: Create directory
+  file:
+    path: "{{ samba_mount_point }}"
+    state: directory
+    mode: '0755'
 
 - name: Do the actual mount
   shell: |
