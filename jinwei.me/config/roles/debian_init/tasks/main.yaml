@@ -19,6 +19,7 @@
       - python3-pip
       - unzip
       - gnupg
+      - rsync
       - htop
       - curl
       - tree
@@ -76,23 +77,17 @@
   become: true
   become_user: admin
 
-- name: Create fstab entry for samba
-  mount:
-    state: present
-    fstype: cifs
-    opts: "credentials={{ user_home }}/.credential,file_mode=0755,dir_mode=0755,user"
-    src: "//{{ lookup('aws_ssm', '/jinwei-me/hetzner/storagebox') }}"
-    path: "{{ samba_mount_point }}"
-  become: true
-
 - name: Create directory
   file:
     path: "{{ samba_mount_point }}"
     state: directory
     mode: '0755'
 
-- name: Do the actual mount
-  shell: |
-    mount "{{ samba_mount_point }}"
+- name: Create fstab entry for samba
+  mount:
+    state: mounted
+    fstype: cifs
+    opts: "credentials={{ user_home }}/.credential,file_mode=0755,dir_mode=0755,user"
+    src: "//{{ lookup('aws_ssm', '/jinwei-me/hetzner/storagebox') }}"
+    path: "{{ samba_mount_point }}"
   become: true
-  become_user: admin
