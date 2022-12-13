@@ -1,4 +1,4 @@
-- name: Pull wordpress Docker image
+- name: pull wordpress Docker image
   community.docker.docker_image:
     name: "{{ wordpress_image }}:{{ wordpress_image_tag }}"
     source: pull
@@ -9,8 +9,19 @@
     dest: "{{ wordpress_home }}/docker-compose.yaml"
     mode: 0644
 
-- name: Start wordpress container using docker-compose
+- name: start wordpress container using docker-compose
   community.docker.docker_compose:
     project_name: wordpress
     project_src: "{{ wordpress_home }}"
   register: output
+
+- name: setup cronjob for additional backup
+  cron:
+    cron_file: wordpress_backup_hetzner
+    user: root
+    state: present
+    name: "wordpress backup"
+    minute: "0"
+    hour: "0"
+    day: "*"
+    job: "tar caf /tmp/wordpress-$(date -u +\\%Y-\\%m-\\%d-\\%H-\\%M-\\%S\\%Z).tar.xz {{ wordpress_home }} && rsync -azvP /tmp/wordpress-*.tar.xz {{ samba_backup_path }}"

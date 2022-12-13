@@ -2,3 +2,4 @@ wordpress_image: clarkzjw/wordpress
 wordpress_image_tag: 20221211
 wordpress_port: 30080
 wordpress_home: /opt/wordpress
+samba_backup_path: /mnt/samba/VPS/aws-jinwei-me/wordpress/
