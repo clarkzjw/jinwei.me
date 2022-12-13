@@ -70,3 +70,21 @@ variable "cloudflare_account_id" {
   type        = string
   sensitive   = true
 }
+
+variable "hetzner_username" {
+  description = "Hetzner username"
+  type        = string
+  sensitive   = true
+}
+
+variable "hetzner_password" {
+  description = "Hetzner password"
+  type        = string
+  sensitive   = true
+}
+
+variable "hetzner_storagebox" {
+  description = "Hetzner storagebox url"
+  type        = string
+  sensitive   = true
+}

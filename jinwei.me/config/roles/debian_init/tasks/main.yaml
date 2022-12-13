@@ -11,6 +11,7 @@
       - build-essential
       - ca-certificates
       - mariadb-client
+      - cifs-utils
       - vnstat
       - lsb-release
       - python3
@@ -26,13 +27,6 @@
       - zsh
       - git
     update_cache: true
-
-- name: add user
-  user:
-    name: clarkzjw
-    shell: /usr/bin/zsh
-    home: "{{ user_home }}"
-    system: true
 
 - name: Add Docker GPG apt Key
   apt_key:
@@ -71,3 +65,28 @@
   ansible.builtin.apt:
     autoremove: true
     purge: true
+
+- name: Create samba credential (used for fstab entry)
+  copy:
+    content: |
+      username={{ lookup('aws_ssm', '/jinwei-me/hetzner/username') }}
+      password={{ lookup('aws_ssm', '/jinwei-me/hetzner/password') }}
+    dest: {{ user_home }}/.credential
+    mode: 0600
+  become: true
+  become_user: admin
+
+- name: Create fstab entry for samba
+  mount:
+    state: present
+    fstype: cifs
+    opts: "credentials={{ user_home }}/.credential,file_mode=0755,dir_mode=0755,user"
+    src: "//{{ lookup('aws_ssm', '/jinwei-me/hetzner/storagebox') }}"
+    path: "{{ samba_mount_point }}"
+  become: true
+
+- name: Do the actual mount
+  shell: |
+    mount "{{ samba_mount_point }}"
+  become: true
+  become_user: admin
