@@ -11,6 +11,7 @@
       - build-essential
       - ca-certificates
       - mariadb-client
+      - vnstat
       - lsb-release
       - python3
       - python3-dev
