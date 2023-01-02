@@ -88,3 +88,15 @@ variable "hetzner_storagebox" {
   type        = string
   sensitive   = true
 }
+
+variable "dockerhub_username" {
+  description = "dockerhub username"
+  type        = string
+  sensitive   = true
+}
+
+variable "dockerhub_token" {
+  description = "dockerhub token"
+  type        = string
+  sensitive   = true
+}
