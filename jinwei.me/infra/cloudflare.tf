@@ -35,6 +35,22 @@ resource "cloudflare_record" "tunnel_dns" {
   proxied = true
 }
 
+resource "cloudflare_record" "bean" {
+  zone_id = data.cloudflare_zones.domain.zones[0].id
+  name    = "bean.${var.site_domain}"
+  value   = "${cloudflare_argo_tunnel.tunnel.id}.cfargotunnel.com"
+  type    = "CNAME"
+  proxied = true
+}
+
+resource "cloudflare_record" "beanweb" {
+  zone_id = data.cloudflare_zones.domain.zones[0].id
+  name    = "beanweb.${var.site_domain}"
+  value   = "${cloudflare_argo_tunnel.tunnel.id}.cfargotunnel.com"
+  type    = "CNAME"
+  proxied = true
+}
+
 resource "cloudflare_tunnel_config" "tunnel_route" {
   account_id = var.cloudflare_account_id
   tunnel_id  = cloudflare_argo_tunnel.tunnel.id
