@@ -20,12 +20,6 @@
     dest: "{{ bean_home }}/docker-compose.yaml"
     mode: 0644
 
-- name: start ledger container using docker-compose
-  community.docker.docker_compose:
-    project_name: ledger
-    project_src: "{{ bean_home }}"
-  register: output
-
 - name: setup cronjob for upgrade
   cron:
     cron_file: ledger_upgrade
@@ -35,4 +29,4 @@
     minute: "0"
     hour: "*"
     day: "*"
-    job: "cd {{ bean_home }} && /usr/local/bin/docker-compose pull && /usr/local/bin/docker-compose up -d"
+    job: "cd {{ bean_home }} && /usr/local/bin/docker-compose pull && /usr/local/bin/docker-compose up -d --force-recreate"
