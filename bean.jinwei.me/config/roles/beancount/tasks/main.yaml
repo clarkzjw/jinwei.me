@@ -35,4 +35,4 @@
     minute: "0"
     hour: "*"
     day: "*"
-    job: "cd {{ bean_home }} && docker-compose pull && docker-compose up -d"
+    job: "cd {{ bean_home }} && /usr/local/bin/docker-compose pull && /usr/local/bin/docker-compose up -d"
