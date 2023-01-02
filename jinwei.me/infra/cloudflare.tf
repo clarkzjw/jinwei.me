@@ -46,6 +46,16 @@ resource "cloudflare_tunnel_config" "tunnel_route" {
       service  = "http://127.0.0.1:30081"
     }
     ingress_rule {
+      hostname = "bean.jinwei.me"
+      path     = "/"
+      service  = "http://127.0.0.1:30082"
+    }
+    ingress_rule {
+      hostname = "beanweb.jinwei.me"
+      path     = "/"
+      service  = "http://127.0.0.1:30083"
+    }
+    ingress_rule {
       service = "http_status:404"
     }
   }
