@@ -1,0 +1,22 @@
+version: '3'
+services:
+    cloudflared:
+        image: cloudflare/cloudflared
+        container_name: cloudflare-tunnel
+        network_mode: host
+        restart: always
+        command: tunnel run
+        environment:
+        - TUNNEL_TOKEN={{ lookup('aws_ssm', '/jinwei-me/cloudflare/tunnel_token') }}
+    wordpress:
+        image: "{{ wordpress_image }}:{{ wordpress_image_tag }}"
+        volumes:
+        - "{{ wordpress_home }}/wp-content:/var/www/html/wp-content"
+        restart: always
+        ports:
+        - 30081:80
+        environment:
+        - WORDPRESS_DB_HOST={{ lookup('aws_ssm', '/jinwei-me/mysql/host') }}:{{ lookup('aws_ssm', '/jinwei-me/mysql/port') }}
+        - WORDPRESS_DB_USER={{ lookup('aws_ssm', '/jinwei-me/mysql/username') }}
+        - WORDPRESS_DB_PASSWORD={{ lookup('aws_ssm', '/jinwei-me/mysql/password') }}
+        - WORDPRESS_DB_NAME={{ lookup('aws_ssm', '/jinwei-me/mysql/name') }}

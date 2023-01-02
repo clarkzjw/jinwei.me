@@ -1,54 +1,46 @@
-terraform {
-  required_providers {
-    hcloud = {
-      source  = "hetznercloud/hcloud"
-      version = "1.36.1"
+locals {
+  name = var.name
+}
+
+data "aws_subnet" "ec2" {
+  filter {
+    name   = "availability-zone"
+    values = [aws_db_instance.jinwei-me.availability_zone]
+  }
+  filter {
+    name   = "subnet-id"
+    values = module.vpc.public_subnets
+  }
+}
+
+resource "aws_instance" "jinwei_me" {
+  ami           = data.aws_ami.debian.id
+  instance_type = var.ec2_instance_type
+
+  subnet_id = data.aws_subnet.ec2.id
+  key_name  = "framework"
+
+  vpc_security_group_ids = [aws_security_group.backend.id]
+
+  root_block_device {
+    volume_type = "gp3"
+    // how to resize partition and file system after resizing ebs volume
+    // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html
+    volume_size = "30"
+    tags = {
+      Name = "${local.name}-root"
     }
   }
-}
 
-variable "hcloud_token" {
-  sensitive = true
-}
-
-variable "ip_range" {
-  default = "10.0.1.0/24"
-}
-
-resource "hcloud_ssh_key" "framework" {
-  name       = "framework"
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILS2i5/x9r+cv2j2/SUZ2x2fgQeGnJP1I7PUHC0UdWN6 framework"
-}
-
-data "hcloud_image" "debian" {
-  name = "debian-11"
-}
-
-resource "hcloud_server" "default" {
-  name        = "photo"
-  image       = data.hcloud_image.debian.name
-  server_type = "cpx11"
-  location    = "fsn1"
-  ssh_keys    = [hcloud_ssh_key.framework.id]
-
-  public_net {
-    ipv4_enabled = true
-    ipv4         = hcloud_primary_ip.primary_ip_1.id
+  tags = {
+    Name = local.name
   }
-  delete_protection  = false
-  rebuild_protection = false
 
-  firewall_ids = [hcloud_firewall.default.id]
+  lifecycle {
+    ignore_changes = [ami]
+  }
 }
 
-resource "hcloud_primary_ip" "primary_ip_1" {
-  name          = "primary_ip_test"
-  datacenter    = "fsn1-dc14"
-  type          = "ipv4"
-  assignee_type = "server"
-  auto_delete   = true
-}
-
-resource "hcloud_firewall" "default" {
-  name = "default"
+resource "aws_eip" "jinwei-me" {
+  instance = aws_instance.jinwei_me.id
 }

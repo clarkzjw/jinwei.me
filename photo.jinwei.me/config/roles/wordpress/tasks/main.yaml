@@ -1,0 +1,16 @@
+- name: Pull wordpress Docker image
+  community.docker.docker_image:
+    name: "{{ wordpress_image }}:{{ wordpress_image_tag }}"
+    source: pull
+
+- name: render config file
+  template:
+    src: docker-compose.yaml.j2
+    dest: "{{ wordpress_home }}/docker-compose.yaml"
+    mode: 0644
+
+- name: Start wordpress container using docker-compose
+  community.docker.docker_compose:
+    project_name: wordpress
+    project_src: "{{ wordpress_home }}"
+  register: output
