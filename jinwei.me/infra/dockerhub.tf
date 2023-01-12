@@ -9,3 +9,9 @@ resource "aws_ssm_parameter" "dockerhub_token" {
   type  = "SecureString"
   value = var.dockerhub_token
 }
+
+resource "aws_ssm_parameter" "datadog_api_key" {
+  name = "/${local.name}/datadog/api_key"
+  type = "SecureString"
+  value = var.datadog_api_key
+}
