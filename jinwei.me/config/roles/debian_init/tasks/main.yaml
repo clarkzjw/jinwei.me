@@ -95,4 +95,4 @@
 
 - name: Install Datadog
   command:
-    DD_API_KEY={{ lookup('aws_secretsmanager_secret', '/jinwei-me/datadog/api_key') }} DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)"
+    DD_API_KEY={{ lookup('aws_ssm', '/jinwei-me/datadog/api_key') }} DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)"
