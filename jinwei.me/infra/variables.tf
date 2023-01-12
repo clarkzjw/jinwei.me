@@ -100,3 +100,9 @@ variable "dockerhub_token" {
   type        = string
   sensitive   = true
 }
+
+variable "datadog_api_key" {
+  description = "Datadog.com API Key"
+  type = string
+  sensitive = true
+}
