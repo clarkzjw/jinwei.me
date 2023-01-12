@@ -94,5 +94,13 @@
   become: true
 
 - name: Install Datadog
-  command:
-    DD_API_KEY={{ lookup('aws_ssm', '/jinwei-me/datadog/api_key') }} DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)"
+  shell: |
+    export DD_API_KEY={{ lookup('aws_ssm', '/jinwei-me/datadog/api_key') }} && \
+    export DD_SITE="datadoghq.com" && \
+    bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)"
+
+- name: enable datadog service
+  systemd:
+    name: datadog-agent
+    enabled: true
+    daemon_reload: true
