@@ -47,7 +47,7 @@ variable "rds_port" {
 
 # EC 2
 variable "ec2_instance_type" {
-  default = "t2.small"
+  default = "t2.micro"
 }
 
 variable "site_domain" {
